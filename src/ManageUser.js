@@ -35,29 +35,23 @@ function ManageUser() {
     <>
       <h1>Manage User</h1>
       <form onSubmit={saveUser}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <br />
-          <input
-            id="name"
-            type="text"
-            name="name" // this is the property we wanna set onChange. can name it anything
-            value={user.name}
-            onChange={handleChange}
-          ></input>
-        </div>
+        <Input
+          id="user-name"
+          type="text"
+          name="name" // this is the property we wanna set onChange. can name it anything
+          value={user.name}
+          onChange={handleChange}
+          label="Name"
+        ></Input>
 
-        <div>
-          <label htmlFor="hairColor">Hair Color</label>
-          <br />
-          <input
-            id="hairColor"
-            type="text"
-            name="hairColor"
-            value={user.hairColor}
-            onChange={handleChange}
-          ></input>
-        </div>
+        <Input
+          id="hair-color"
+          type="text"
+          name="hairColor"
+          value={user.hairColor}
+          onChange={handleChange}
+          label="Hair color"
+        ></Input>
 
         <input type="submit" value="Save User"></input>
       </form>
