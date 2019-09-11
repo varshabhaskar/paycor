@@ -13,7 +13,7 @@
     {
       "id": 3,
       "name": "test",
-      "hairColor": "blue"
+      "hairColor": "red"
     },
     {
       "id": 4,
@@ -23,7 +23,12 @@
     {
       "id": 5,
       "name": "hey",
-      "hairColor": "hay"
+      "hairColor": "hay1"
+    },
+    {
+      "id": 6,
+      "name": "great",
+      "hairColor": "yellow"
     }
   ],
   "cars": [

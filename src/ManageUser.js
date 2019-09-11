@@ -17,6 +17,9 @@ function ManageUser(props) {
 
   //can be simplified as
   const [user, setUser] = useState(newUser);
+  //user is same as a state prop in class like this.state.user
+  //setUser is same as setSate in class like this.setState
+
   useEffect(() => {
     //If it is edit, then we do this
     if (props.match.params.userId) {
@@ -26,21 +29,17 @@ function ManageUser(props) {
     }
   }, [props.match.params.userId]); //this will get called every time it renders and only when the second param value changes
 
-  //user is same as a state prop in class like this.state.user
-  //setUser is same as setSate in class like this.setState
+  function handleSave(savedUser) {
+    props.history.push("/users"); // will redirect to a relative url based on host name. Another option to Redirect
+    debugger;
+    toast.success(savedUser.name + " saved! 👍");
+  }
 
   function saveUser(event) {
     event.preventDefault(); //prevents posting back to server
-    if (user.id) {
-      userApi.editUser(user).then(savedUser => {
-        props.history.push("/users"); // will redirect to a relative url based on host name. Another option to Redirect
-        toast.success("User saved! 👍");
-      });
-    }
-    userApi.addUser(user).then(savedUser => {
-      props.history.push("/users"); // will redirect to a relative url based on host name. Another option to Redirect
-      toast.success("User saved! 👍");
-    });
+    user.id
+      ? userApi.editUser(user).then(handleSave)
+      : userApi.addUser(user).then(handleSave);
   }
 
   function handleChange(event) {
