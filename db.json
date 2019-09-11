@@ -9,6 +9,11 @@
       "id": 2,
       "name": "Varun",
       "hairColor": "Blonde"
+    },
+    {
+      "id": 3,
+      "name": "test",
+      "hairColor": "blue"
     }
   ],
   "cars": [

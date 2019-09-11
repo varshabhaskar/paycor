@@ -36,17 +36,15 @@ class Users extends React.Component {
     );
   };
 
-  redirectToManageUser = () => {
-    this.setState({ redirect: true });
-  };
-
   //the JSX we returned here will be rendered.
   render() {
     return (
       <>
         <h1>Users</h1>
         {this.state.redirect && <Redirect to="/manage-user"></Redirect>}
-        <Button onClick={this.redirectToManageUser}>Add User</Button>
+        <Button onClick={() => this.setState({ redirect: true })}>
+          Add User
+        </Button>
         <ul>{this.state.users.map(this.renderUser)}</ul>
       </>
     );
