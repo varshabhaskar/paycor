@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "./reusable/Input";
 import * as userApi from "./api/userApi";
+import { toast } from "react-toastify";
 
 const newUser = {
   id: null,
@@ -16,14 +17,30 @@ function ManageUser(props) {
 
   //can be simplified as
   const [user, setUser] = useState(newUser);
+  useEffect(() => {
+    //If it is edit, then we do this
+    if (props.match.params.userId) {
+      userApi.getUserById(props.match.params.userId).then(user => {
+        setUser(user);
+      });
+    }
+  }, [props.match.params.userId]); //this will get called every time it renders and only when the second param value changes
 
   //user is same as a state prop in class like this.state.user
   //setUser is same as setSate in class like this.setState
 
   function saveUser(event) {
     event.preventDefault(); //prevents posting back to server
-    userApi.addUser(user).then(savedUser => {});
-    //TODO: redirect
+    if (user.id) {
+      userApi.editUser(user).then(savedUser => {
+        props.history.push("/users"); // will redirect to a relative url based on host name. Another option to Redirect
+        toast.success("User saved! 👍");
+      });
+    }
+    userApi.addUser(user).then(savedUser => {
+      props.history.push("/users"); // will redirect to a relative url based on host name. Another option to Redirect
+      toast.success("User saved! 👍");
+    });
   }
 
   function handleChange(event) {
