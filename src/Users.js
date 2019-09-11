@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import * as userApi from "./api/userApi";
 
 class Users extends React.Component {
@@ -37,6 +38,7 @@ class Users extends React.Component {
     return (
       <>
         <h1>Users</h1>
+        <Link to="/manage-user">Add User</Link>
         <ul>{this.state.users.map(this.renderUser)}</ul>
       </>
     );

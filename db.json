@@ -2,11 +2,13 @@
   "users": [
     {
       "id": 1,
-      "name": "Varsha"
+      "name": "Varsha",
+      "hairColor": "Black"
     },
     {
       "id": 2,
-      "name": "Varun"
+      "name": "Varun",
+      "hairColor": "Blonde"
     }
   ],
   "cars": [
