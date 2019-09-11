@@ -1,12 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import * as userApi from "./api/userApi";
+import Button from "@paycor/button";
 
 class Users extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      redirect: false
     };
     //this.deleteUser = this.deleteUser.bind(this);
   }
@@ -33,12 +35,18 @@ class Users extends React.Component {
       </li>
     );
   };
+
+  redirectToManageUser = () => {
+    this.setState({ redirect: true });
+  };
+
   //the JSX we returned here will be rendered.
   render() {
     return (
       <>
         <h1>Users</h1>
-        <Link to="/manage-user">Add User</Link>
+        {this.state.redirect && <Redirect to="/manage-user"></Redirect>}
+        <Button onClick={this.redirectToManageUser}>Add User</Button>
         <ul>{this.state.users.map(this.renderUser)}</ul>
       </>
     );
