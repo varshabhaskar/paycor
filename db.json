@@ -1,3 +1,22 @@
 {
-  "user": [{ "id": 1, "name": "Varsha" }, { "id": 2, "name": "Varun" }]
+  "users": [
+    {
+      "id": 1,
+      "name": "Varsha"
+    },
+    {
+      "id": 2,
+      "name": "Varun"
+    }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "name": "Nissan"
+    },
+    {
+      "id": 2,
+      "name": "Tesla"
+    }
+  ]
 }
