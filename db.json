@@ -29,6 +29,16 @@
       "id": 6,
       "name": "great",
       "hairColor": "yellow"
+    },
+    {
+      "id": 7,
+      "name": "new test",
+      "hairColor": "purple"
+    },
+    {
+      "id": 8,
+      "name": "Make",
+      "hairColor": "pink"
     }
   ],
   "cars": [
