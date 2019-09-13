@@ -22,7 +22,11 @@ function Input(props) {
         onChange={props.onChange}
         style={props.error && inputErrorStyle}
       ></input>
-      {props.error && <p style={errorStyle}>{props.error}</p>}
+      {props.error && (
+        <p role="alert" style={errorStyle}>
+          {props.error}
+        </p>
+      )}
     </div>
   );
 }

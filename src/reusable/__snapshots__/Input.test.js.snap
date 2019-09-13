@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render the error para when error is not provided 1`] = `
+<div>
+  <label
+    htmlFor="test"
+  >
+    test
+  </label>
+  <br />
+  <input
+    id="test"
+    name="test"
+    onChange={[Function]}
+    value="test"
+  />
+</div>
+`;
