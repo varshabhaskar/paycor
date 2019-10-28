@@ -6,6 +6,7 @@
     "@paycor/button": "^2.1.13",
     "@paycor/icon": "^1.1.14",
     "@paycor/modal": "^1.2.14",
+    "@storybook/addon-knobs": "^5.2.5",
     "@testing-library/cypress": "^5.0.0",
     "@testing-library/react": "^9.1.4",
     "cypress": "^3.4.1",
@@ -25,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,5 +44,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-links": "^5.2.5",
+    "@storybook/addons": "^5.2.5",
+    "@storybook/react": "^5.2.5",
+    "babel-loader": "^8.0.6"
   }
 }

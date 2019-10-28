@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Input from "./reusable/Input";
+import Select from "./reusable/Select";
 import * as userApi from "./api/userApi";
 import { toast } from "react-toastify";
+import { errorStyle, inputErrorStyle } from "./styles";
 
 const newUser = {
   id: null,
   name: "",
-  hairColor: ""
+  role: ""
+};
+const option1 = {
+  value: "",
+  label: ""
+};
+const option2 = {
+  value: "user",
+  label: "User"
+};
+const option3 = {
+  value: "admin",
+  label: "User"
 };
 
 function ManageUser(props) {
@@ -47,7 +61,7 @@ function ManageUser(props) {
   function isValid() {
     const _errors = {};
     if (!user.name) _errors.name = "Name is required";
-    if (!user.hairColor) _errors.hairColor = "Hair Color is required";
+    if (!user.role) _errors.role = "Role is required";
     setErrors(_errors);
     // if errors object still doesn't have any properties, then there are no errors
     return Object.keys(_errors).length === 0;
@@ -83,16 +97,20 @@ function ManageUser(props) {
           label="Name"
           error={errors.name}
         ></Input>
-
-        <Input
-          id="hair-color"
+        <Select
+          id="role"
           type="text"
-          name="hairColor"
-          value={user.hairColor}
+          name="role" // this is the property we wanna set onChange. can name it anything
+          value={user.role}
           onChange={handleChange}
-          label="Hair color"
-          error={errors.hairColor}
-        ></Input>
+          label="Role"
+          error={errors.role}
+          options={[
+            { label: "", value: "" },
+            { label: "User", value: "user" },
+            { label: "Admin", value: "admin" }
+          ]}
+        ></Select>
 
         <input
           type="submit"

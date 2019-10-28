@@ -1,14 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { errorColor } from "../styles";
+import { errorStyle, inputErrorStyle } from "../styles";
 
-const errorStyle = {
-  color: errorColor,
-  fontWeight: "bold"
-};
-const inputErrorStyle = {
-  border: "solid 1px " + errorColor
-};
 function Input(props) {
   return (
     <div>
@@ -32,11 +25,18 @@ function Input(props) {
 }
 
 Input.propTypes = {
+  /** HTML Id **assigned** to the input */
   id: PropTypes.string.isRequired,
+  /** Label Value */
   label: PropTypes.string.isRequired,
+  /** Input Type */
+
   type: PropTypes.oneOf(["text", "email", "phone", "number"]),
+  /** Input name */
   name: PropTypes.string.isRequired,
+  /** Function Called onChange */
   onChange: PropTypes.func.isRequired,
+  /** Value assigned to input */
   value: PropTypes.string.isRequired
 };
 

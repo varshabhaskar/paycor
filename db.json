@@ -3,32 +3,22 @@
     {
       "id": 2,
       "name": "Varun",
-      "hairColor": "Blond"
+      "role": "user"
     },
     {
       "id": 3,
       "name": "test",
-      "hairColor": "red"
-    },
-    {
-      "id": 4,
-      "name": "new",
-      "hairColor": "red"
-    },
-    {
-      "id": 5,
-      "name": "hey",
-      "hairColor": "hay1"
+      "role": "admin"
     },
     {
       "id": 6,
       "name": "great",
-      "hairColor": "yellow"
+      "role": "user"
     },
     {
       "id": 7,
       "name": "new test",
-      "hairColor": "purple"
+      "role": "user"
     }
   ],
   "cars": [
