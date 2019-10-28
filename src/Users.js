@@ -1,23 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
-import * as userApi from "./api/userApi";
 import Button from "@paycor/button";
 import { Delete } from "@paycor/icon";
+import PropTypes from "prop-types";
 
-function Users(props) {
-  const [users, setUsers] = useState([]);
+function Users({ deleteUser, users }) {
   const [redirect, setRedirect] = useState(false);
-
-  useEffect(() => {
-    userApi.getUsers().then(users => setUsers(users));
-  }, []); //this will get called every time it renders and only when the second param value changes
-
-  function deleteUser(userId) {
-    userApi.deleteUser(userId).then(() => {
-      const _users = users.filter(user => user.id !== userId);
-      setUsers(_users);
-    });
-  }
 
   function renderUser(user) {
     return (
@@ -46,5 +34,10 @@ function Users(props) {
     </>
   );
 }
+
+Users.propTypes = {
+  deleteUser: PropTypes.func.isRequired,
+  users: PropTypes.array.isRequired
+};
 
 export default Users;

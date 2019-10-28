@@ -3,24 +3,12 @@ import Input from "./reusable/Input";
 import Select from "./reusable/Select";
 import * as userApi from "./api/userApi";
 import { toast } from "react-toastify";
-import { errorStyle, inputErrorStyle } from "./styles";
+import PropTypes from "prop-types";
 
 const newUser = {
   id: null,
   name: "",
   role: ""
-};
-const option1 = {
-  value: "",
-  label: ""
-};
-const option2 = {
-  value: "user",
-  label: "User"
-};
-const option3 = {
-  value: "admin",
-  label: "User"
 };
 
 function ManageUser(props) {
@@ -41,18 +29,19 @@ function ManageUser(props) {
     let mounted = true;
     //If it is edit, then we do this
     if (props.match.params.userId) {
-      userApi.getUserById(props.match.params.userId).then(user => {
-        //this is to prevent error which occurs when u navigate to another page when api called is in progress
-        if (mounted) {
-          setUser(user);
-          setIsLoading(false);
-        }
-      });
+      const _user = props.users.find(
+        x => x.id === parseInt(props.match.params.userId, 10)
+      );
+      //this is to prevent error which occurs when u navigate to another page when api called is in progress
+      if (mounted) {
+        setUser(_user);
+        setIsLoading(false);
+      }
     } else setIsLoading(false); //If adding, nothing to load
 
     //called when componenet is unmounting.
     return () => (mounted = false);
-  }, [props.match.params.userId]); //this will get called every time it renders and only when the second param value changes
+  }, [props.match.params.userId, props.users]); //this will get called every time it renders and only when the second param value changes
 
   function handleSave(savedUser) {
     props.history.push("/users"); // will redirect to a relative url based on host name. Another option to Redirect
@@ -70,9 +59,21 @@ function ManageUser(props) {
     event.preventDefault(); //prevents posting back to server
     if (!isValid()) return;
     setIsFormSubmitted(true);
-    user.id
-      ? userApi.editUser(user).then(handleSave)
-      : userApi.addUser(user).then(handleSave);
+    if (user.id) {
+      userApi.editUser(user).then(savedUser => {
+        const newUsers = props.users.map(u =>
+          u.id === savedUser.id ? savedUser : u
+        );
+        props.setUsers(newUsers);
+        handleSave(savedUser);
+      });
+    } else {
+      userApi.addUser(user).then(savedUser => {
+        const newUsers = [...props.users, savedUser];
+        props.setUsers(newUsers);
+        handleSave(savedUser);
+      });
+    }
   }
 
   function handleChange(event) {
@@ -121,5 +122,10 @@ function ManageUser(props) {
     </>
   );
 }
+
+ManageUser.propTypes = {
+  users: PropTypes.array.isRequired,
+  setUser: PropTypes.func.isRequired
+};
 
 export default ManageUser;
