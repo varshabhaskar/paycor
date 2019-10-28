@@ -1,14 +1,9 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "New name",
-      "hairColor": "Black"
-    },
-    {
       "id": 2,
       "name": "Varun",
-      "hairColor": "Blonde"
+      "hairColor": "Blond"
     },
     {
       "id": 3,
@@ -34,11 +29,6 @@
       "id": 7,
       "name": "new test",
       "hairColor": "purple"
-    },
-    {
-      "id": 8,
-      "name": "Make",
-      "hairColor": "pink"
     }
   ],
   "cars": [
